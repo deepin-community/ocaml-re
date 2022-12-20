@@ -1,0 +1,43 @@
+Source: ocaml-re
+Section: ocaml
+Priority: optional
+Maintainer: Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>
+Uploaders:
+ Mehdi Dogguy <mehdi@debian.org>
+Build-Depends:
+ debhelper-compat (= 12),
+ ocaml-nox,
+ ocaml-findlib,
+ ocaml-dune,
+ libseq-ocaml-dev,
+ libounit-ocaml-dev,
+ dh-ocaml
+Standards-Version: 4.4.1
+Rules-Requires-Root: no
+Homepage: https://github.com/ocaml/ocaml-re
+Vcs-Browser: https://salsa.debian.org/ocaml-team/ocaml-re
+Vcs-Git: https://salsa.debian.org/ocaml-team/ocaml-re.git
+
+Package: libre-ocaml-dev
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ ${ocaml:Depends}
+Provides:
+ ${ocaml:Provides}
+Recommends: ocaml-findlib
+Description: regular expression library for OCaml
+ RE is regular expression library for OCaml. The following styles of
+ regular expressions are supported:
+  * Perl-style regular expressions (module Re.Perl);
+  * Posix extended regular expressions (module Re.Posix);
+  * Emacs-style regular expressions (module Re.Emacs);
+  * Shell-style file globbing (module Re.Glob);
+  * Compatibility layer for OCaml's built-in Str module (module Re.Str).
+ .
+ It is also possible to build regular expressions by combining simpler
+ regular expressions (module Re)
+ .
+ This package contains the development modules you need to use RE in
+ your programs.
