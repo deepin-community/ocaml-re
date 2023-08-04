@@ -3,22 +3,5 @@
 
 include /usr/share/ocaml/ocamlvars.mk
 
-DESTDIR := $(CURDIR)/debian/tmp
-
 %:
-	dh $@ --with ocaml
-
-override_dh_auto_build:
-	dune build -p re
-
-override_dh_auto_test:
-ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	dune runtest -p re
-endif
-
-override_dh_auto_install:
-	dune install --destdir=$(DESTDIR) --prefix=/usr --libdir=..$(OCAML_STDLIB_DIR)
-	rm -f $(DESTDIR)/usr/doc/re/LICENSE.md
-
-override_dh_missing:
-	dh_missing --list-missing
+	dh $@ --with ocaml --buildsystem ocaml_dune

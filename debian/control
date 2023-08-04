@@ -5,14 +5,14 @@ Maintainer: Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>
 Uploaders:
  Mehdi Dogguy <mehdi@debian.org>
 Build-Depends:
- debhelper-compat (= 12),
+ debhelper-compat (= 13),
  ocaml-nox,
  ocaml-findlib,
  ocaml-dune,
  libseq-ocaml-dev,
  libounit-ocaml-dev,
- dh-ocaml
-Standards-Version: 4.4.1
+ dh-ocaml (>= 1.2)
+Standards-Version: 4.6.1
 Rules-Requires-Root: no
 Homepage: https://github.com/ocaml/ocaml-re
 Vcs-Browser: https://salsa.debian.org/ocaml-team/ocaml-re
