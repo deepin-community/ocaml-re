@@ -1,8 +1,42 @@
-ocaml-re (1.9.0-deepin1) unstable; urgency=medium
+ocaml-re (1.10.4-3) unstable; urgency=medium
 
-  * Rebuild
+  * Team upload
+  * Include ocamlvars.mk in debian/rules
 
- -- Deepin Packages Builder <packages@deepin.org>  Fri, 11 Nov 2022 18:01:44 +0800
+ -- Stéphane Glondu <glondu@debian.org>  Thu, 27 Jul 2023 06:43:19 +0200
+
+ocaml-re (1.10.4-2) unstable; urgency=medium
+
+  * Team upload
+  * Use ocaml_dune DH buildsystem
+
+ -- Stéphane Glondu <glondu@debian.org>  Sat, 15 Jul 2023 16:30:27 +0200
+
+ocaml-re (1.10.4-1) unstable; urgency=medium
+
+  [ Stéphane Glondu ]
+  * Team upload
+  * New upstream release
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields
+  * Update standards version to 4.6.1
+
+ -- Stéphane Glondu <glondu@debian.org>  Mon, 23 Jan 2023 11:09:45 +0100
+
+ocaml-re (1.10.3-1) unstable; urgency=medium
+
+  [ Stéphane Glondu ]
+  * Team upload
+  * New upstream release
+  * Bump Standards-Version to 4.6.0
+  * Update debian/watch
+
+  [ Debian Janitor ]
+  * Update watch file format version to 4.
+  * Bump debhelper from old 12 to 13.
+
+ -- Stéphane Glondu <glondu@debian.org>  Mon, 29 Nov 2021 13:18:10 +0100
 
 ocaml-re (1.9.0-1) unstable; urgency=medium
 

@@ -50,6 +50,14 @@ let _ =
     expect_eq_str not_found ()   (Group.get m) 4;
   );
 
+  expect_pass "Group.get_opt" (fun () ->
+    expect_eq_str_opt id (Some "ab") (Group.get_opt m) 0;
+    expect_eq_str_opt id (Some "a")  (Group.get_opt m) 1;
+    expect_eq_str_opt id None        (Group.get_opt m) 2;
+    expect_eq_str_opt id (Some "b")  (Group.get_opt m) 3;
+    expect_eq_str_opt id None        (Group.get_opt m) 4;
+  );
+
   expect_pass "Group.offset" (fun () ->
     expect_eq_ofs id        (0,2) (Group.offset m) 0;
     expect_eq_ofs id        (0,1) (Group.offset m) 1;
@@ -168,12 +176,16 @@ let _ =
     re_match  (seq [bow; char 'a'])       "a"     [|(0,1)|];
     re_match  (seq [bow; char 'a'])       "bb aa" [|(3,4)|];
     re_fail   (seq [bow; char 'a'])       "ba ba";
+    re_fail   bow                         ";";
+    re_fail   bow                         "";
   );
 
   expect_pass "eow" (fun () ->
     re_match  (seq [char 'a'; eow])       "a"     [|(0,1)|];
     re_match  (seq [char 'a'; eow])       "bb aa" [|(4,5)|];
     re_fail   (seq [char 'a'; eow])       "ab ab";
+    re_fail   eow                         ";";
+    re_fail   eow                         "";
   );
 
   expect_pass "bos" (fun () ->
@@ -214,10 +226,13 @@ let _ =
     re_match  (word (str "aa"))           "aa"    [|(0,2)|];
     re_match  (word (str "aa"))           "bb aa" [|(3,5)|];
     re_fail   (word (str "aa"))           "aaa";
+    re_fail   (word (str ""))             "";
   );
 
   expect_pass "not_boundary" (fun () ->
     re_match (seq [not_boundary; char 'b'; not_boundary])  "abc"  [|(1,2)|];
+    re_match (seq [char ';'; not_boundary; char ';'])      ";;"   [|(0,2)|];
+    re_match (seq [not_boundary; char ';'; not_boundary])  ";"    [|(0,1)|];
     re_fail  (seq [not_boundary; char 'a'])  "abc";
     re_fail  (seq [char 'c'; not_boundary])  "abc";
   );
